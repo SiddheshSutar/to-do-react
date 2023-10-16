@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './list.module.scss'
+import { removeToDo } from '../reduxSlices/todoSlice';
 
 const List = () => {
 
@@ -13,7 +14,16 @@ const List = () => {
             {
                 todos.map((item, index) => (
                     <li key = {index}>
-                        {item}
+                        <div className={styles['item-row']}>
+                            <div className={styles['item-col']}>
+                                {item}
+                            </div>
+                            <div className={`${styles['item-col']} ${styles['remove-icon']}`}
+                                onClick={e => dispatch(removeToDo(index))}
+                            >
+                                &#x2613;
+                            </div>
+                        </div>
                     </li>
                 ))
             }

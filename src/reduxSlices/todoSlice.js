@@ -16,10 +16,13 @@ export const todoSlice = createSlice({
       state.todos.push(state.text)
       state.text = ''
     },
+    removeToDo: (state, action) => {
+      state.todos = state.todos.filter((item, index) => index !== action.payload)
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { handleTextChange, addToDo } = todoSlice.actions
+export const { handleTextChange, addToDo, removeToDo } = todoSlice.actions
 
 export default todoSlice.reducer
