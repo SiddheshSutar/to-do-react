@@ -1,9 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
+import { apiUrl } from '../constants';
 
 const initialState = {
   text: '',
   todos: []
 }
+
+export const fetchToDoAsync = createAsyncThunk(
+  "todo/fetchToDoAsync",
+  async () => {
+    const response = await axios.get(apiUrl);
+    return response.data;
+  }
+);
+export const addToDoAsync = createAsyncThunk(
+  "todo/addToDoAsync",
+  async (payload) => {
+    console.log('hex: ', payload)
+    const response = await axios.post(`${apiUrl}`, payload);
+    return response.data;
+  }
+);
 
 export const todoSlice = createSlice({
   name: 'todo',
@@ -17,9 +35,19 @@ export const todoSlice = createSlice({
       state.text = ''
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchToDoAsync.fulfilled, (state, action) => {
+        state.todos = action.payload.slice(0,5)
+      })
+      .addCase(addToDoAsync.fulfilled, (state, action) => {
+        state.todos.push(action.payload)
+      })
+  }
 })
 
-// Action creators are generated for each case reducer function
+export const todoReducer = todoSlice.reducer
+
 export const { handleTextChange, addToDo } = todoSlice.actions
 
-export default todoSlice.reducer
+export const todoSelector = state => state.todoReducer
