@@ -17,7 +17,6 @@ export const fetchToDoAsync = createAsyncThunk(
 export const addToDoAsync = createAsyncThunk(
   "todo/addToDoAsync",
   async (payload) => {
-    console.log('hex: ', payload)
     const response = await axios.post(`${apiUrl}`, payload);
     return response.data;
   }
@@ -35,7 +34,7 @@ export const todoSlice = createSlice({
       state.text = ''
     },
     removeToDo: (state, action) => {
-      state.todos = state.todos.filter((item, index) => index !== action.payload)
+      state.todos = state.todos.filter((item, index) => item.id !== action.payload.id)
     },
   },
   extraReducers: (builder) => {

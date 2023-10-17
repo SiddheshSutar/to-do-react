@@ -13,6 +13,7 @@ const List = () => {
     useEffect(() => {
         dispatch(fetchToDoAsync())
     }, [])
+    console.log('hex: ', todos)
 
     return <div className={styles['container']}>
         <ul>
@@ -25,7 +26,7 @@ const List = () => {
                                 {item.title}
                             </div>
                             <div className={`${styles['item-col']} ${styles['remove-icon']}`}
-                                onClick={e => dispatch(removeToDo(index))}
+                                onClick={e => dispatch(removeToDo(item))}
                             >
                                 &#x2613;
                             </div>

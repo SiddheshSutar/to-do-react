@@ -12,7 +12,7 @@ const Form = () => {
 
         if (e.key === 'Enter') {
             dispatch(addToDoAsync({
-                text,
+                title: text,
                 completed: false
             }))
 
@@ -26,7 +26,7 @@ const Form = () => {
                 onChange={e => {
                     dispatch(handleTextChange(e.target.value))
                 }}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyPress}
             />
         </div>
     );

@@ -20,7 +20,6 @@ export const alertSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchToDoAsync.pending, (state, action) => {
-                console.log('hex: ', state.fetchToDosStatus)
                 state.fetchToDosStatus = 'loading'
             })
             .addCase(fetchToDoAsync.fulfilled, (state, action) => {
