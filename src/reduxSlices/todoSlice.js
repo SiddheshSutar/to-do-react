@@ -49,7 +49,8 @@ export const todoSlice = createSlice({
   }
 })
 
-// Action creators are generated for each case reducer function
+export const todoReducer = todoSlice.reducer
+
 export const { handleTextChange, addToDo, removeToDo } = todoSlice.actions
 
 export const todoSelector = state => state.todoReducer
