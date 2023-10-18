@@ -8,7 +8,7 @@
 
     li {
         list-style-type: none;
-        background: linear-gradient(82deg, rgba(255,245,245,0) 0%, rgba(209,211,244,0.6474964985994398) 100%);
+        background: linear-gradient(82deg, rgba(255, 245, 245, 0) 0%, rgba(209, 211, 244, 0.6474964985994398) 100%);
 
         &:not(:last-of-type) {
             margin-bottom: 5px;
@@ -24,9 +24,9 @@
                 max-width: 60ch;
                 white-space: pre-wrap;
                 font-style: italic;
-                    font-family: serif;
-                    font-size: 1.5rem;
-                    letter-spacing: 1px;
+                font-family: serif;
+                font-size: 1.5rem;
+                letter-spacing: 1px;
             }
 
             .right-col {
@@ -36,8 +36,6 @@
 
                 .icon {
                     position: relative;
-                    opacity: 0;
-                    pointer-events: none;
                     transition: all 0.3s linear;
                     cursor: pointer;
                 }
@@ -46,21 +44,7 @@
                     padding: 10px;
                     padding-right: 0;
                     font-weight: bold;
-
-                    left: 10px;
                 }
-
-                .toggle-icon {
-                    left: 20px;
-                }
-            }
-        }
-
-        .item-row:hover {
-            .remove-icon, .toggle-icon {
-                left: 0;
-                opacity: 1;
-                pointer-events: all;
             }
         }
     }
