@@ -29,6 +29,14 @@ const Form = () => {
                 }}
                 onKeyDown={handleKeyPress}
             />
+            <button type='button'
+                className={styles['btn']}
+                onClick={e => handleKeyPress({ key: 'Enter' })}
+            >
+                <div className={styles['btn-text']}>
+                    Add
+                </div>
+            </button>
         </div>
     );
 }
