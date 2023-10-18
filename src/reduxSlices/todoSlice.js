@@ -14,6 +14,16 @@ export const fetchToDoAsync = createAsyncThunk(
     return response.data;
   }
 );
+
+export const deleteToDoAsync = createAsyncThunk(
+  "todo/deleteToDoAsync",
+  async (payload) => {
+    if(!payload.id) return { error: 'record id not passed' }
+    const response = await axios.delete(`${apiUrl}/${payload.id}`);
+    return payload;
+  }
+);
+
 export const addToDoAsync = createAsyncThunk(
   "todo/addToDoAsync",
   async (payload) => {
@@ -44,6 +54,9 @@ export const todoSlice = createSlice({
       })
       .addCase(addToDoAsync.fulfilled, (state, action) => {
         state.todos.push(action.payload)
+      })
+      .addCase(deleteToDoAsync.fulfilled, (state, action) => {
+        state.todos = state.todos.filter(item => item.id !== action.payload.id)
       })
   }
 })

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './list.module.scss'
 import { useEffect } from 'react';
-import { fetchToDoAsync, todoSelector } from '../reduxSlices/todoSlice';
+import { deleteToDoAsync, fetchToDoAsync, todoSelector } from '../reduxSlices/todoSlice';
 import { alertSelector } from '../reduxSlices/alertSlice';
 import { removeToDo } from '../reduxSlices/todoSlice';
 
@@ -26,7 +26,8 @@ const List = () => {
                                 {item.title}
                             </div>
                             <div className={`${styles['item-col']} ${styles['remove-icon']}`}
-                                onClick={e => dispatch(removeToDo(item))}
+                                // onClick={e => dispatch(removeToDo(item))}
+                                onClick={e => dispatch(deleteToDoAsync(item))}
                             >
                                 &#x2613;
                             </div>
