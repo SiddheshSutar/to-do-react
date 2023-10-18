@@ -54,6 +54,7 @@ export const todoSlice = createSlice({
       })
       .addCase(addToDoAsync.fulfilled, (state, action) => {
         state.todos.push(action.payload)
+        state.text = ''
       })
       .addCase(deleteToDoAsync.fulfilled, (state, action) => {
         state.todos = state.todos.filter(item => item.id !== action.payload.id)

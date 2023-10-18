@@ -11,8 +11,6 @@ const Notifications = () => {
 
     const toastId = useRef(null);
     const dispatch = useDispatch();
-    
-    toast.dismiss();
 
     if (fetchToDosStatus === 'loading' && toastId.current !== 'fetchToDosStatus:loading') {
         toast.loading('Fetching todos', { autoClose: toastTimeout })
@@ -28,7 +26,7 @@ const Notifications = () => {
     }
 
     if (fetchToDosStatus === 'completed') {
-        // toast.dismiss();
+        toast.dismiss();
         toastId.current = null
         toastId.current = toast.success('Fetched todos')
         setTimeout(() => {
@@ -36,7 +34,7 @@ const Notifications = () => {
         }, toastTimeout);
     }
     if (addToDoStatus === 'completed') {
-        // toast.dismiss();
+        toast.dismiss();
         toastId.current = null
         toastId.current = toast.success('Added todo')
         setTimeout(() => {
@@ -44,7 +42,7 @@ const Notifications = () => {
         }, toastTimeout);
     }
     if (deleteToDoStatus === 'completed') {
-        // toast.dismiss();
+        toast.dismiss();
         toastId.current = null
         toastId.current = toast.success('Deleted todo')
         setTimeout(() => {

@@ -23,6 +23,7 @@ const Form = () => {
         <div className={styles['container']}>
             <input
                 value={text}
+                placeholder="What's on your mind today ?"
                 onChange={e => {
                     dispatch(handleTextChange(e.target.value))
                 }}
