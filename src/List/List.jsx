@@ -21,7 +21,7 @@ const List = () => {
                 todos.map((item, index) => (
                     <li key = {index}>
                         <div className={styles['item-row']}>
-                            <div className={styles['item-col']}
+                            <div className={`${styles['item-col']} ${styles['title']}`}
                                 style={{
                                     textDecoration: item.completed ? 'line-through' : 'none'
                                 }}

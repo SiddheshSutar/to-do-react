@@ -9,6 +9,10 @@
             display: flex;
             justify-content:space-between;
             align-items: center;
+
+            .title {
+                cursor: pointer;
+            }
             
             .remove-icon {
                 padding: 10px;
