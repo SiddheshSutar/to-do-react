@@ -29,20 +29,22 @@ const Form = () => {
                 }}
                 onKeyDown={handleKeyPress}
             />
-            <div>
+            <div className={styles['btn-row']}>
                 <button type='button'
-                    className={styles['btn']}
+                    className={`${styles['btn']} ${styles['add']}`}
                     disabled={!text}
                     onClick={e => handleKeyPress({ key: 'Enter' })}
                 >
                     Add
                 </button>
-                {text && <button type='button'
-                    className={styles['btn']}
-                    onClick={e => dispatch(handleTextChange(''))}
-                >
-                    Clear
-                </button>}
+                <div className={`${styles['clear-btn-wrapper']}`}>
+                    <button type='button'
+                        className={`${styles['btn']} ${styles['clear']} ${text ? styles['visible'] : ''}`}
+                        onClick={e => dispatch(handleTextChange(''))}
+                    >
+                        Clear
+                    </button>
+                </div>
             </div>
         </div>
     );
