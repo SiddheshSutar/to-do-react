@@ -19,26 +19,39 @@ const List = () => {
             {
                 todos.length > 0 &&
                 todos.map((item, index) => (
-                    <li key = {index}>
+                    <li key={index}>
                         <div className={styles['item-row']}>
                             <div className={`${styles['item-col']} ${styles['title']}`}
                                 style={{
                                     textDecoration: item.completed ? 'line-through' : 'none'
                                 }}
-                                onClick={e => {
-                                    dispatch(updateToDoAsync({
-                                        ...item,
-                                        completed: !item.completed
-                                    }))
-                                }}
+                            // onClick={e => {
+                            //     dispatch(updateToDoAsync({
+                            //         ...item,
+                            //         completed: !item.completed
+                            //     }))
+                            // }}
                             >
                                 {item.title}
                             </div>
-                            <div className={`${styles['item-col']} ${styles['remove-icon']}`}
-                                // onClick={e => dispatch(removeToDo(item))}
-                                onClick={e => dispatch(deleteToDoAsync(item))}
-                            >
-                                &#x2613;
+                            <div className={`${styles['item-col']} ${styles['right-col']}`}>
+                                <div className={`${styles['icon']} ${styles['toggle-icon']}`}
+                                    title={item.completed ? 'Mark as incomplete' : 'Mark as completed'}
+                                    onClick={e => {
+                                        dispatch(updateToDoAsync({
+                                            ...item,
+                                            completed: !item.completed
+                                        }))
+                                    }}
+                                >
+                                    Toggle
+                                </div>
+                                <div className={`${styles['icon']} ${styles['remove-icon']}`}
+                                    // onClick={e => dispatch(removeToDo(item))}
+                                    onClick={e => dispatch(deleteToDoAsync(item))}
+                                >
+                                    &#x2613;
+                                </div>
                             </div>
                         </div>
                     </li>

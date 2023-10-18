@@ -29,14 +29,21 @@ const Form = () => {
                 }}
                 onKeyDown={handleKeyPress}
             />
-            <button type='button'
-                className={styles['btn']}
-                onClick={e => handleKeyPress({ key: 'Enter' })}
-            >
-                <div className={styles['btn-text']}>
+            <div>
+                <button type='button'
+                    className={styles['btn']}
+                    disabled={!text}
+                    onClick={e => handleKeyPress({ key: 'Enter' })}
+                >
                     Add
-                </div>
-            </button>
+                </button>
+                {text && <button type='button'
+                    className={styles['btn']}
+                    onClick={e => dispatch(handleTextChange(''))}
+                >
+                    Clear
+                </button>}
+            </div>
         </div>
     );
 }
