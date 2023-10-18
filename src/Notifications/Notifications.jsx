@@ -7,7 +7,7 @@ import { memo, useRef } from "react";
 
 const Notifications = () => {
 
-    const { fetchToDosStatus, addToDoStatus, deleteToDoStatus } = useSelector(alertSelector)
+    const { fetchToDosStatus, addToDoStatus, updateToDoStatus, deleteToDoStatus } = useSelector(alertSelector)
 
     const toastId = useRef(null);
     const dispatch = useDispatch();
@@ -19,6 +19,10 @@ const Notifications = () => {
     if (addToDoStatus === 'loading' && toastId.current !== 'addToDoStatus:loading') {
         toastId.current = toast.loading('Adding todos')
         toastId.current = 'addToDoStatus:loading'
+    }
+    if (updateToDoStatus === 'loading' && toastId.current !== 'updateToDoStatus:loading') {
+        toastId.current = toast.loading('Updating todos')
+        toastId.current = 'updateToDoStatus:loading'
     }
     if (deleteToDoStatus === 'loading' && toastId.current !== 'deleteToDoStatus:loading') {
         toastId.current = toast.loading('Adding todos')
@@ -39,6 +43,14 @@ const Notifications = () => {
         toastId.current = toast.success('Added todo')
         setTimeout(() => {
             dispatch(reset('addToDoStatus'))
+        }, toastTimeout);
+    }
+    if (updateToDoStatus === 'completed') {
+        toast.dismiss();
+        toastId.current = null
+        toastId.current = toast.success('Updated todo')
+        setTimeout(() => {
+            dispatch(reset('updateToDoStatus'))
         }, toastTimeout);
     }
     if (deleteToDoStatus === 'completed') {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './list.module.scss'
 import { useEffect } from 'react';
-import { deleteToDoAsync, fetchToDoAsync, todoSelector } from '../reduxSlices/todoSlice';
+import { deleteToDoAsync, fetchToDoAsync, todoSelector, updateToDoAsync } from '../reduxSlices/todoSlice';
 import { alertSelector } from '../reduxSlices/alertSlice';
 import { removeToDo } from '../reduxSlices/todoSlice';
 
@@ -13,7 +13,6 @@ const List = () => {
     useEffect(() => {
         dispatch(fetchToDoAsync())
     }, [])
-    console.log('hex: ', todos)
 
     return <div className={styles['container']}>
         <ul>
@@ -22,7 +21,17 @@ const List = () => {
                 todos.map((item, index) => (
                     <li key = {index}>
                         <div className={styles['item-row']}>
-                            <div className={styles['item-col']}>
+                            <div className={styles['item-col']}
+                                style={{
+                                    textDecoration: item.completed ? 'line-through' : 'none'
+                                }}
+                                onClick={e => {
+                                    dispatch(updateToDoAsync({
+                                        ...item,
+                                        completed: !item.completed
+                                    }))
+                                }}
+                            >
                                 {item.title}
                             </div>
                             <div className={`${styles['item-col']} ${styles['remove-icon']}`}

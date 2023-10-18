@@ -24,6 +24,14 @@ export const deleteToDoAsync = createAsyncThunk(
   }
 );
 
+export const updateToDoAsync = createAsyncThunk(
+  "todo/updateToDoAsync",
+  async (payload) => {
+    const response = await axios.put(`${apiUrl}/${payload.id}`, payload);
+    return payload;
+  }
+);
+
 export const addToDoAsync = createAsyncThunk(
   "todo/addToDoAsync",
   async (payload) => {
@@ -54,6 +62,17 @@ export const todoSlice = createSlice({
       })
       .addCase(addToDoAsync.fulfilled, (state, action) => {
         state.todos.push(action.payload)
+        state.text = ''
+      })
+      .addCase(updateToDoAsync.fulfilled, (state, action) => {
+        state.todos = state.todos.map(item => {
+          if(item.id === action.payload.id) {
+            return {
+              ...item,
+              ...action.payload
+            }
+          } else return item
+        })
         state.text = ''
       })
       .addCase(deleteToDoAsync.fulfilled, (state, action) => {

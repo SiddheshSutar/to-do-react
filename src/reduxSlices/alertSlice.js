@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { addToDoAsync, deleteToDoAsync, fetchToDoAsync } from './todoSlice';
+import { addToDoAsync, deleteToDoAsync, fetchToDoAsync, updateToDoAsync } from './todoSlice';
 import { toastTimeout } from '../constants';
 import { toast } from 'react-toastify';
 
@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 const INITIAL_STATE = {
     fetchToDosStatus: null,
     addToDoStatus: null,
+    updateToDoStatus: null,
     deleteToDoStatus: null,
 };
 
@@ -37,6 +38,12 @@ export const alertSlice = createSlice({
             })
             .addCase(deleteToDoAsync.fulfilled, (state, action) => {
                 state.deleteToDoStatus = 'completed'
+            })
+            .addCase(updateToDoAsync.pending, (state, action) => {
+                state.updateToDoStatus = 'loading'
+            })
+            .addCase(updateToDoAsync.fulfilled, (state, action) => {
+                state.updateToDoStatus = 'completed'
             })
     }
 })
