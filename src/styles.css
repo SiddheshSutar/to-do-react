@@ -4,6 +4,7 @@
 
   --main-blue: #0ecbe9;
   --main-blue-dark: #0897ad;
+  --grey-main: #5e5a5a;
 }
 
 .App {
@@ -13,7 +14,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
   font-family: sans-serif;
   background-color: #c7f8ff;
 }

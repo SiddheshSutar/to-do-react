@@ -49,10 +49,10 @@ const List = () => {
                                             Toggle
                                         </div>
                                         <div className={`${styles['icon']} ${styles['remove-icon']}`}
-                                            // onClick={e => dispatch(removeToDo(item))}
+                                            title="Remove to do"
                                             onClick={e => dispatch(deleteToDoAsync(item))}
                                         >
-                                            &#x2613;
+                                            <div className={`${styles['symbol']}`}>+</div>
                                         </div>
                                     </div>
                                 </div>
