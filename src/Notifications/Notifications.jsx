@@ -1,3 +1,6 @@
+/**
+ * Component: To display all states of api lifecycles OR any popups needed inbetween
+ */
 import { alertSelector, reset } from "../reduxSlices/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toastTimeout } from "../constants";

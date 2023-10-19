@@ -17,6 +17,7 @@
   height: 97vh;
   font-family: sans-serif;
   background-color: #c7f8ff;
+  overflow-x: hidden;
 }
 
 .content {
