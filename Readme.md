@@ -12,7 +12,7 @@ To run in the project in local environment:
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-# github: 
-# youtube: 
-# hosted URL:
+# github: https://github.com/SiddheshSutar/to-do-react.git
+# youtube: https://youtu.be/H7-mns7PEQ8
+# hosted URL: https://to-do-react-j7rb.onrender.com
 
