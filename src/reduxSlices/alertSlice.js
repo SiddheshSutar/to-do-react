@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { addToDoAsync, deleteToDoAsync, fetchToDoAsync, updateToDoAsync } from './todoSlice';
-import { toastTimeout } from '../constants';
-import { toast } from 'react-toastify';
-
 
 const INITIAL_STATE = {
     fetchToDosStatus: null,

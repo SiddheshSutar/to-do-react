@@ -2,8 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './list.module.scss'
 import { useEffect, useState } from 'react';
 import { deleteToDoAsync, fetchToDoAsync, todoSelector, updateToDoAsync } from '../reduxSlices/todoSlice';
-import { alertSelector } from '../reduxSlices/alertSlice';
-import { removeToDo } from '../reduxSlices/todoSlice';
 
 const List = () => {
 
